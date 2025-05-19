@@ -1,7 +1,7 @@
 {
   "name": "VPN PWA",
   "short_name": "VPN",
-  "start_url": "/",
+  "start_url": "/?redirect=/onboarding",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#698BF4",
