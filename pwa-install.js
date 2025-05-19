@@ -53,14 +53,14 @@
   };
 })();
 
-// setInterval(() => {
+setInterval(() => {
 
-//   const isStandalone =
-//   window.matchMedia('(display-mode: standalone)').matches ||
-//   window.navigator.standalone === true; // для iOS
+  const isStandalone =
+  window.matchMedia('(display-mode: standalone)').matches ||
+  window.navigator.standalone === true; // для iOS
 
-//   if (isStandalone) {
-//     window.location.href = '/';
-//     return;
-//   }
-// }, 500)
+  if (isStandalone) {
+    window.location.href = '/';
+    return;
+  }
+}, 500)
