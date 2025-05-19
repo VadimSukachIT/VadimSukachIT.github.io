@@ -2,6 +2,16 @@
 (function () {
   const source = document.currentScript.dataset.source || 'unknown-landing';
 
+  const isStandalone =
+  window.matchMedia('(display-mode: standalone)').matches ||
+  window.navigator.standalone === true; // для iOS
+
+  if (isStandalone) {
+    window.location.href = '/';
+    return;
+  }
+
+  
   // Регистрируем service worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js');
