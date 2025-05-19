@@ -2,15 +2,6 @@
 (function () {
   const source = document.currentScript.dataset.source || 'unknown-landing';
 
-  const isStandalone =
-  window.matchMedia('(display-mode: standalone)').matches ||
-  window.navigator.standalone === true; // для iOS
-
-  if (!isStandalone) {
-    window.location.href = '/';
-    return;
-  }
-
   // Регистрируем service worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js');
@@ -24,6 +15,18 @@
     const btn = document.getElementById('install-btn');
     if (btn) {
       btn.classList.add('visible');
+    }
+  });
+
+  window.addEventListener('afterinstallprompt', (e) => {
+    e.preventDefault();
+    const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true; // для iOS
+  
+    if (isStandalone) {
+      window.location.href = '/';
+      return;
     }
   });
 
@@ -49,3 +52,15 @@
     });
   };
 })();
+
+// setInterval(() => {
+
+//   const isStandalone =
+//   window.matchMedia('(display-mode: standalone)').matches ||
+//   window.navigator.standalone === true; // для iOS
+
+//   if (isStandalone) {
+//     window.location.href = '/';
+//     return;
+//   }
+// }, 500)
