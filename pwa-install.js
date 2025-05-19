@@ -22,11 +22,12 @@
     if (!deferredPrompt) return;
 
     // Опционально: лог установки
-    fetch('/api/pwa', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ source })
-    });
+    
+    // fetch('/api/pwa', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ source })
+    // });
 
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choice) => {
